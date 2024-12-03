@@ -18,7 +18,7 @@ podTemplate(label: 'docker-build',
   ]
 ) {
     node('docker-build') {
-        def dockerHubCred = DockerHubCredentail #생성했던 도커허브 credentials ID 입력.
+        def dockerHubCred = DockerHubCredentail // 생성했던 도커허브 credentials ID 입력.
         def appImage
         
         stage('Checkout'){
@@ -30,7 +30,7 @@ podTemplate(label: 'docker-build',
         stage('Build'){
             container('docker'){
                 script {
-                    appImage = docker.build("mwjang/node-hello-world") #mwjang 부분에 자신의 도커허브 사용자 이름 입력.
+                    appImage = docker.build("mwjang/node-hello-world") // mwjang 부분에 자신의 도커허브 사용자 이름 입력.
                 }
             }
         }
