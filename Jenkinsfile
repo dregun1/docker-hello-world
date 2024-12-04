@@ -1,3 +1,5 @@
+
+
 podTemplate(label: 'docker-build', 
   containers: [
     containerTemplate(
@@ -15,10 +17,6 @@ podTemplate(label: 'docker-build',
   ],
   volumes: [ 
     hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'), 
-  ],
-  jenkinsUrl: 'http://jenkins:8080', // Jenkins의 URL을 명시적으로 설정
-  jnlp: [ 
-    containerTemplate(name: 'jnlp', image: 'jenkins/inbound-agent', args: '${computer.jnlpmac} ${computer.name}', ttyEnabled: true, workingDir: '/home/jenkins/agent')
   ]
 ) {
     node('docker-build') {
@@ -63,4 +61,3 @@ podTemplate(label: 'docker-build',
     }
     
 }
-
