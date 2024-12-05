@@ -40,7 +40,7 @@ podTemplate(label: 'docker-build',
             container('docker'){
                 script {
                     appImage.inside {
-                        sh 'npm install'
+                        sh 'npm install -Dorg.jenkinsci.plugins.durabletask.BourneShellScript.LAUNCH_DIAGNOSTICS=true' 
                         sh 'npm test'
                     }
                 }
