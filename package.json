@@ -2,7 +2,7 @@
   "name": "node-hello-world",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "git+https://github.com/learnk8s/node-hello-world.git",
+  "repository": "git-github:learnk8s/node-hello-world",
   "author": "<hello@learnk8s.io>",
   "license": "MIT",
   "dependencies": {
