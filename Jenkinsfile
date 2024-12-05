@@ -9,7 +9,7 @@ podTemplate(label: 'docker-build',
     ),
     containerTemplate(
       name: 'docker',
-      image: 'node:lts',
+      image: 'docker',
       command: 'cat',
       ttyEnabled: true
     ),
