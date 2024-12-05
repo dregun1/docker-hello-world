@@ -40,7 +40,7 @@ podTemplate(label: 'docker-build',
             container('docker'){
                 script {
                     appImage.inside {
-                        sh 'npm install --save-' 
+                        sh 'npm install --save' 
                         sh 'npm test'
                     }
                 }
