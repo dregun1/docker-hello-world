@@ -23,7 +23,7 @@ podTemplate(label: 'docker-build',
         def appImage
         
         stage('Checkout'){
-            container('git'){
+            container('argo'){
                 checkout scm
             }
         }
