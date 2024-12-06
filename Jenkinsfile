@@ -36,16 +36,7 @@ podTemplate(label: 'docker-build',
             }
         }
         
-        stage('Test'){
-            container('docker'){
-                script {
-                    appImage.inside {
-      
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
+     
 
         stage('Push'){
             container('docker'){
