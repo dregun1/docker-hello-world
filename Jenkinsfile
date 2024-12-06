@@ -10,7 +10,7 @@ podTemplate(label: 'docker-build',
     containerTemplate(
       name: 'docker',
       image: 'docker',
-      command: 'cat',
+      command: '/bin/sh',
       ttyEnabled: true
     ),
   ],
