@@ -4,7 +4,7 @@ FROM node:lts
 WORKDIR /app
 COPY package*.json ./
 # 의존성 설치
-RUN npm ci --only=production
+RUN npm install
 
 # 나머지 애플리케이션 파일 복사
 COPY . .
