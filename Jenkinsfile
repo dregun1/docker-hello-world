@@ -19,7 +19,7 @@ podTemplate(label: 'docker-build',
   ]
 ) {
     node('docker-build') {
-        def dockerHubCred = 'DockerHubCredential'// 생성했던 도커허브 credentials ID 입력.
+        def dockerHubCred = 'DockerHubCredentail'// 생성했던 도커허브 credentials ID 입력.
         def appImage
         
         stage('Checkout'){
