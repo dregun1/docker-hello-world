@@ -10,7 +10,7 @@ podTemplate(label: 'docker-build',
     containerTemplate(
       name: 'docker',
       image: 'docker',
-      command: '/bin/bash',
+      command: 'cat',
       ttyEnabled: true
     ),
   ],
@@ -39,7 +39,10 @@ podTemplate(label: 'docker-build',
         stage('Test'){
             container('docker'){
                 script {
-                     sh 'docker run --rm -t -v /home/jenkins/agent/workspace/test:/workspace mwjang/node-hello-world bash -c "cd /workspace && npm test"'
+                    appImage.inside {
+      
+                        sh 'npm test'
+                    }
                 }
             }
         }
