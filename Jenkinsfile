@@ -2,8 +2,8 @@
 podTemplate(label: 'docker-build', 
   containers: [
     containerTemplate(
-      name: 'git',
-      image: 'alpine/git',
+      name: 'argo',
+      image: 'argoproj/argo-cd-ci-builder:latest',
       command: 'cat',
       ttyEnabled: true
     ),
@@ -47,6 +47,33 @@ podTemplate(label: 'docker-build',
                 }
             }
         }
+        stage('Deploy'){
+            container('argo'){
+                checkout([$class: 'GitSCM',
+                        branches: [[name: '*/main' ]],
+                        extensions: scm.extensions,
+                        userRemoteConfigs: [[
+                            url: 'git@github.com:dregun1/docker-hello-world-deployment.git',
+                            credentialsId: 'jenkins',
+                        ]]
+                ])
+                sshagent(credentials: ['jenkins']){
+                    sh("""
+                        #!/usr/bin/env bash
+                        set +x
+                        export GIT_SSH_COMMAND="ssh -oStrictHostKeyChecking=no"
+                        git config --global user.email "dregun1@naver.com"
+                        git checkout main
+                        cd env/dev && kustomize edit set image mwjang/node-hello-world:${BUILD_NUMBER}
+                        git commit -a -m "updated the image tag"
+                        git push
+                    """)
+                }
+            }
+        }
+
+
+      
     }
     
 }
