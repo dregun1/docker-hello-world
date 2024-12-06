@@ -39,8 +39,8 @@ podTemplate(label: 'docker-build',
             container('docker'){
                 script {
                     appImage.inside {
-                        sh 'yarn install'
-                        sh 'yarn test'
+                        sh 'npm install'
+                        sh 'npm test'
                     }
                 }
             }
