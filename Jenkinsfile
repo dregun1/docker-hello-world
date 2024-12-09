@@ -54,10 +54,10 @@ podTemplate(label: 'docker-build',
                         extensions: scm.extensions,
                         userRemoteConfigs: [[
                             url: 'git@github.com:dregun1/docker-hello-world-deployment.git',
-                            credentialsId: 'jenkins',
+                            credentialsId: 'dregun1',
                         ]]
                 ])
-                sshagent(credentials: ['jenkins']){
+                sshagent(credentials: ['dregun1']){
                     sh("""
                         #!/usr/bin/env bash
                         set +x
